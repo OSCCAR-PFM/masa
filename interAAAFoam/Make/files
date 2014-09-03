@@ -1,0 +1,6 @@
+interAAAFoam.C
+solidParticle.C
+solidParticleIO.C
+solidParticleCloud.C
+
+EXE = $(FOAM_APPBIN)/interAAAFoam
