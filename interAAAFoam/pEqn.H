@@ -4,6 +4,7 @@
 
     volVectorField HbyA("HbyA", U);
     HbyA = rAU*UEqn.H();
+/////// Comment
 
     surfaceScalarField phiHbyA
     (
