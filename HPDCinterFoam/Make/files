@@ -1,0 +1,6 @@
+HPDCinterFoam.C
+solidParticle.C
+solidParticleIO.C
+solidParticleCloud.C
+
+EXE = $(FOAM_USER_APPBIN)/HPDCinterFoam
