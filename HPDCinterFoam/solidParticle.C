@@ -217,10 +217,11 @@ void Foam::solidParticle::hitWallPatch
 
 //////////  These two criteria are the same. the only difference is that it is empowered by 1.6  ~~~  K = pow (k', 1.6) !!
                        scalar KNum= pow(ReNum,.4)  *  pow(WeNum,.8);
-    //if(KNum < 657 && KNum > 657) //|| KNum <  57.7 )
-                     if(KNum > 0.001) //|| KNum <  57.7 )
+
+                    if(KNum < 657 ) //|| KNum <  57.7 )     ///  K number is computed here
+                  //if(KNum > 0.001)
                             {
-                     // Info<< "particle deposition..." << nl << endl;
+                       // Info<< "particle deposition..." << nl << endl;
                        td.keepParticle = false;
 
                        td.cloud().correctalpha1()[cellI] = 100 * .52 * pow(elmnt().d(),3);
