@@ -1,0 +1,34 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 2.1.1-221db2718bbb
+Exec   : HPDCinterFoam
+Date   : Sep 30 2014
+Time   : 11:21:19
+Host   : "Saeedipour-desktop"
+PID    : 1438
+Case   : /home/saeedipour/OpenFOAM/saeedipour-2.1.1/run/September_2014/Case8_TMS_1mm_50/system
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+
+
+--> FOAM FATAL IO ERROR: 
+cannot find file
+
+file: /home/saeedipour/OpenFOAM/saeedipour-2.1.1/run/September_2014/Case8_TMS_1mm_50/system/system/controlDict at line 0.
+
+    From function regIOobject::readStream()
+    in file db/regIOobject/regIOobjectRead.C at line 73.
+
+FOAM exiting
+

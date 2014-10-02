@@ -1,0 +1,43 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1                                  |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.1;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           dictionary;
+    object          particleProperties;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+    rhop                     rhop [1 -3 0 0 0 0 0] 2360;
+    e                        e [0 0 0 0 0 0 0] 0.85;   
+    mu                       mu [0 0 0 0 0 0 0] 0.2;
+    PrPr                     PrPr [0 0 0 0 0 0 0] 0.005;
+    kapkap                   kapkap [1 1 -3 -1 0 0 0] .58;
+    CpCppart                 CpCppart [0 2 -2 -1 0 0 0] 903;
+
+    posP1  	                 posP1 [ 0 1 0 0 0 0 0] (0.044 0.598 0.010);
+    dP1  		             dP1 [ 0 1 0 0 0 0 0] 0.000010;
+    UP1	            	     UP1 [ 0 1 -1 0 0 0 0] (0 0 0);
+    TP1  		             TP1 [ 0 0 0 1 0 0 0] 360;
+
+    tInjStart 	             tInjStart [ 0 0 1 0 0 0 0] 1e-4;  //1e-4
+    tInjEnd 	             tInjEnd [ 0 0 1 0 0 0 0]  5e-4;  //3e-4
+
+    mudrop                   mudrop  [1 -1 -1 0 0 0 0] 1.3e-3;
+    sigmad                   sigmad [0 0 0 0 0 0 0] .861;
+
+// ************************************************************************* //

@@ -1,0 +1,35 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4.1-dev                             |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version 2.0;
+    format ascii;
+
+    root "/home/goniva/OpenFOAM/goniva-1.4.1-dev/run/rhoTurbSprayFoam";
+    case "Staubsack";
+    instance "0.001";
+    local "lagrangian";
+
+    class vectorField;
+    object U;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+1
+(
+//(0 0 0)
+(0 0 0)
+//(8 -5 0)
+//(10 3 0)
+//(10 5 0)
+//(10 0 0)
+)
+
+// ************************************************************************* //

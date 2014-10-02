@@ -1,0 +1,112 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.1;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     HPDCinterFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         6e-2;  //6e-2
+
+deltaT          1e-6;    
+
+writeControl    adjustableRunTime;
+
+writeInterval   1e-5;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression uncompressed;
+
+timeFormat      general;
+
+timePrecision   8;
+
+runTimeModifiable yes;
+
+adjustTimeStep  off;
+
+maxCo           0.6; //.9
+maxAlphaCo      0.2; //.2
+
+maxDeltaT       0.001; //1
+
+// libs ("libmyIncompressibleRASModels.so");
+libs ("libmyincompressibleTransportModels.so");
+
+functions
+(
+    probes
+    {
+        type        probes;
+        // Where to load it from
+        functionObjectLibs 
+         ( 
+            "libsampling.so"
+         );
+
+        // Name of the directory for probe data
+        name        probes;
+        probeLocations (( 0.017 0.0065 0.003 ));        // one diameter behind cylinder
+        
+
+        // Fields to be probed
+        fields ( U );
+        fields ( alpha1 );
+
+        outputControl   timeStep; //outputTime;
+        outputInterval  1;
+    }
+
+ 
+ /*   elevation
+    {
+        type         surfaces;
+        functionObjectLibs
+        (
+            "libsampling.so"
+        );
+        outputControl   outputTime;
+        surfaceFormat  raw;
+        fields
+        (
+            alpha1
+        );
+        surfaces
+        (
+            topFreeSurface
+            {
+                type        isoSurface;
+                isoField    alpha1;
+                isoValue    0.5;
+               interpolationScheme true;
+            }
+        );
+    }
+ */
+
+);
+
+
+// ************************************************************************* //
