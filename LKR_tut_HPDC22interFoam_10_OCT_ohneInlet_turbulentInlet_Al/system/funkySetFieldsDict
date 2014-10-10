@@ -1,0 +1,42 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "a";
+    case            "neutralTest";
+    instance        "system";
+    local           "";
+
+    class           dictionary;
+    object          funkySetFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+expressions
+(
+	init
+	{ 
+		field alpha1;
+		expression "0";
+		keepPatches true;
+	}
+	setGamma
+	{
+		field alpha1;
+		expression "1";
+		condition "pos().x < .091 && pos().y > -3";
+		keepPatches true;
+	}
+	//*  .003 < pos().y && pos().y < 0.007 &&  -.004 < pos().x && 
+);
+
+
+// ************************************************************************* //
