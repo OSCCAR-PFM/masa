@@ -37,7 +37,7 @@ volTensorField fluctensor = AAAup*tx1 + AAAvp*tx2 + AAAwp*tx3 ;
 fluctuation1 = fluctensor & gradAlphaUSE;     // simon suggests
 fluctuation2 = AAAup*vx1 + AAAvp*vx2 + AAAwp*vx3 ;  //simply use
 
-UFLUK =  (U ^ vx1) + 3 *fluctuation1;
+UFLUK =  (U ^ vx1) + 2.5 *fluctuation1;
  //UFLUK =  U  + 2.5 *fluctuation1;
 
  
