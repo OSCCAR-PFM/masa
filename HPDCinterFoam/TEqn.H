@@ -3,7 +3,7 @@ surfaceScalarField kappaf = twoPhaseProperties.kappaf();
 
 //volScalarField kappaEff("kappaEff", turbulence->nu()/Pr + kappaf);
 
-//+ fvc::interpolate(rho*turbulence->nut())
+ 
 
         fvScalarMatrix TEqn
         (
@@ -13,7 +13,7 @@ surfaceScalarField kappaf = twoPhaseProperties.kappaf();
         - (rho1-rho2) * CPCPPARTICLE  * particles.sourceAddTOT()
         -  CPCPPARTICLE * particles.sTempsTemp()
         );
-//TEqn.relax();
-TEqn.solve();
+ 
+        TEqn.solve();
 
-                //Info<< "*** CpCp " <<  CpCp << endl;
+ 

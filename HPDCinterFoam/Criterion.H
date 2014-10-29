@@ -37,7 +37,7 @@ volTensorField fluctensor = AAAup*tx1 + AAAvp*tx2 + AAAwp*tx3 ;
 fluctuation1 = fluctensor & gradAlphaUSE;     // simon suggests
 fluctuation2 = AAAup*vx1 + AAAvp*vx2 + AAAwp*vx3 ;  //simply use
 
-UFLUK =  (U ^ vx1) + 2.5 *fluctuation1;
+UFLUK =  (U ^ vx1) + 1.5 *fluctuation1;
  //UFLUK =  U  + 2.5 *fluctuation1;
 
  
@@ -50,7 +50,7 @@ UFLUK =  (U ^ vx1) + 2.5 *fluctuation1;
  
 
  
-criterion2 = ((rho1 *   (rey.component(0)+rey.component(3)+rey.component(5)) + 3.5 * rho2* pow(mag(U),2))* pow(TLS,3)  - 1 * interface.sigma()*pow(TLS,2));   //3 , 1  baraye maghale
+criterion2 = ((rho1 *   (rey.component(0)+rey.component(3)+rey.component(5)) + 3.5 * rho2* pow(mag(U),2))* pow(TLS,3)  - 1 * interface.sigma()*pow(TLS,2));   //3 , 1  for paper
  
  
  

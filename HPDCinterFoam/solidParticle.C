@@ -124,35 +124,25 @@ bool Foam::solidParticle::move
          scalar Dc = (24.0*nuc/d_)*(pow(ReFunc,(.033))+aaaRe)*(3.0/4.0)*(rhoc/(d_*rhop));
  
 //////////////////////////////////////////////////////////
- /*       if (Re > 0.01)
-        {
-          ReFunc += 5*0.15*pow(Re, 0.687);
  
-       }
-         scalar Dc = (24.0*nuc/d_)*ReFunc*(3.0/4.0)*(rhoc/(d_*rhop));
-*/
 ///////////////////////////////////
-scalar m=rhop*4/3*(3.1415)*pow(d_/2,3);
+                scalar m=rhop*4/3*(3.1415)*pow(d_/2,3);
 
-vector oldMom=U_*m;  
+                vector oldMom=U_*m;  
 ///////////////////////////////////////////////////////...Dc= 1/tau!!!
                  scalar oldTemp= T_*m;
 /////////////////////////////////////
-        U_ = (U_ + dt*(Dc*Uc + (1.0 - rhoc/rhop)*td.g()))/(1.0 + dt*Dc);
-                                T_ = (T_ + dt*(Sdh0*Tc));
-                                //T_ = (T_ + dt*(Sdh0*Tc))/(1.0 + dt*Sdh0);   //ba - bad nabood
+                U_ = (U_ + dt*(Dc*Uc + (1.0 - rhoc/rhop)*td.g()))/(1.0 + dt*Dc);
+                T_ = (T_ + dt*(Sdh0*Tc));
+                //T_ = (T_ + dt*(Sdh0*Tc))/(1.0 + dt*Sdh0);   //ba - bad nabood
 
 
 ////////////////////////////////////
-vector newMom=U_*m;//!?  
-                                scalar newTemp=T_*m; 
-td.cloud().smom()[cellI] += newMom-oldMom;
-                                td.cloud().sTemp()[cellI] += newTemp-oldTemp;
-  // Info<< "Stemp = " << td.cloud().sTemp()<< endl;
-
-
- //td.cloud().sourceAddTOAlpha()[cellI]+=
- //td.cloud().sourceAddToU()[cellI]+=sourcecorrectU_;
+                vector newMom=U_*m;//!?  
+                scalar newTemp=T_*m; 
+                td.cloud().smom()[cellI] += newMom-oldMom;
+                td.cloud().sTemp()[cellI] += newTemp-oldTemp;
+ 
 /////////////////////////////////////
 
         if (onBoundary() && td.keepParticle)
@@ -212,20 +202,19 @@ void Foam::solidParticle::hitWallPatch
                      label cellI = cell();
                      scalar ReNum= (td.cloud().rhop() * mag(elmnt().U()) * elmnt().d())/td.cloud().mudrop(); 
                      scalar WeNum= (td.cloud().rhop() * mag(elmnt().U()) * mag(elmnt().U()) * elmnt().d())/td.cloud().sigmad();
-                    // scalar KNum= sqrt(sqrt(ReNum)) * sqrt(WeNum)   ;   
-                    // scalar KNum= pow(ReNum,.25) * pow(WeNum,.5)  *  ;  
+ 
 
 //////////  These two criteria are the same. the only difference is that it is empowered by 1.6  ~~~  K = pow (k', 1.6) !!
                        scalar KNum= pow(ReNum,.4)  *  pow(WeNum,.8);
 
                     if(KNum < 657 ) //|| KNum <  57.7 )     ///  K number is computed here
-                  //if(KNum > 0.001)
+                     //if(KNum > 0.001)
                             {
                        // Info<< "particle deposition..." << nl << endl;
                        td.keepParticle = false;
 
-                       td.cloud().correctalpha1()[cellI] = 100 * .52 * pow(elmnt().d(),3);
-                       td.cloud().correctU()[cellI] = 0.10*elmnt().U();
+                       td.cloud().correctalpha1()[cellI] = 10 * .52 * pow(elmnt().d(),3);
+                       td.cloud().correctU()[cellI] = 0.0 * elmnt().U();
 
                             } 
 
@@ -234,36 +223,11 @@ void Foam::solidParticle::hitWallPatch
  
 ///////////////////////////////////////////////////////////7
 
-    //particle::writeFields(td);
-  /*  label ii = 0;
-    forAllConstIter(Cloud<solidParticle>, td, iter)
-    {
-        const solidParticle& p = iter();
-
-     //   d[ii] = p.d_;
-       // U[ii] = p.U_;
-        //T[ii] = p.T_; //T
-        ii++;
-    }
-*/
-
+ 
 
 
 ////////////////////////////////////////////////////////////////7       
- /*
-
-    scalar ReNum= (td.cloud().rhop() * Un * d_ )/td.cloud().mudrop();//*td.cloud().sigmad() ;
-    scalar WeNum= (td.cloud().rhop() * Un * Un * d_)/td.cloud().sigmad()  ;
-    scalar KNum= sqrt(ReNum)  *  sqrt(sqrt(WeNum));
-      if(KNum < 57.7)
-      {
-  Info<< "particle deposition..." << nl << endl;
-   // td.cloud().correctalpha1() += .52 * pow(d_,3);
- //   td.cloud().correctU() += U_;
-    td.keepParticle = false;
-
-     }
-*/
+ 
 ///////////////////////////////////////////////////////////////////
     if (Un > 0)
     {

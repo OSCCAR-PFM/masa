@@ -132,7 +132,7 @@ interpolationCellPoint<scalar> NdropInterp(Ndrop);
 interpolationCellPoint<scalar> TInterp(T);
 
 forAll(mesh_.cells(), cellI)
-{
+    {
 	if (alpha1[cellI]  < scalar(0.9) && alpha1[cellI]  > scalar(0.1)  )
 	 		  {
                   if ( TLS[cellI] <  pow(mesh_.V()[cellI],(1.0/3.0)) && criterion2[cellI] > scalar(0) && Ndrop[cellI] > scalar(1.0) )   /// 1 * pow(mesh...  alpha1[cellI]*
@@ -146,7 +146,7 @@ forAll(mesh_.cells(), cellI)
                         solidParticle* ptr1= new solidParticle(td.cloud().mesh_,mesh_.C()[cellI],cellI,tetFaceI,tetPtI, 1.5 * TLS[cellI], UFLUK[cellI]); 
                         Cloud<solidParticle>::addParticle(ptr1);
 
-                                if (Ndrop[cellI] > scalar(1.99))
+                            /*    if (Ndrop[cellI] > scalar(1.99))
                                 {
 
                                     solidParticle* ptr2= new solidParticle(td.cloud().mesh_,mesh_.C()[cellI],cellI,tetFaceI,tetPtI, 1.5 * TLS[cellI], UFLUK[cellI]); 
@@ -155,6 +155,7 @@ forAll(mesh_.cells(), cellI)
                                     Cloud<solidParticle>::addParticle(ptr2);
                                     Cloud<solidParticle>::addParticle(ptr3);
                                 }
+                            */
                                                  
                           sourcecorrectalpha1_=scalar(1.0)*.52*pow(TLS[cellI],3)/(mesh_.time().deltaT().value()*mesh_.V()[cellI]); 
                                                       
@@ -165,15 +166,13 @@ forAll(mesh_.cells(), cellI)
                                 }  
                                                       
                           sourcecorrectU_=  (scalar(1.0) * .52 *pow(TLS[cellI],3)/(mesh_.V()[cellI]))* U[cellI]; 
-                     // sourcecorrectT_=( scalar(1.0) * .52 *pow(TLS[cellI],3)/((mesh_.V()[cellI])*(mesh_.time().deltaT().value())))*T[cellI];  
-                     //  sourcecorrectT_=( scalar(1.0) * .52 *pow(TLS[cellI],3)/(mesh_.V()[cellI]))*T[cellI];
                           sourcecorrectT_=( scalar(1.0) * .52 *pow(TLS[cellI],3)/mesh_.time().deltaT().value())*T[cellI];
                       }
                                                  
-                                     }
+                 }
 
 
-}
+    }   
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -26,23 +26,7 @@
     while (pimple.correctNonOrthogonal())
 ///////////////////////////////////
     {
-////////////////////////////////////////////////////////
-    		    
-             /*      if (alpha1[cellI]  < scalar(0.25) && alpha1[cellI]  > scalar(.10) )//&& criterion2> scalar(1e-9))
-                           {
-			fvScalarMatrix p_rghEqn
-     			    (
-       			   fvm::laplacian(rAUf, p_rgh) == fvc::div(phi) +  fvc::ddt(alpha1)
-                            );
-                            } 
-                   else
-                            {
-                           fvScalarMatrix p_rghEqn
-     			    (
-       			   fvm::laplacian(rAUf, p_rgh) == fvc::div(phi)  
-                            );
-                            }*/
-///////////////////////////////////////////////////////
+ 
 
     		     fvScalarMatrix p_rghEqn
      			   (
